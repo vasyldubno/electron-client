@@ -1,0 +1,19 @@
+.wrapper {
+	@apply rounded-[20px] border-[#B6B6B6] border-[1px] pt-6 px-2 relative w-full max-w-[308px] pb-[5%] justify-self-center;
+}
+
+.title {
+	@apply font-medium text-[#003F62] text-lg px-3 mb-4;
+}
+
+.price {
+	@apply text-lg pl-3 font-semibold text-[#4A4A4A];
+}
+
+.addToCart {
+	@apply py-5 pl-6 bg-[#87BCD9] rounded-[20px] ml-2 pr-6 hidden items-center;
+}
+
+.preview {
+	@apply bg-[#87BCD9] py-5 px-6 rounded-[20px] items-center justify-center hidden;
+}

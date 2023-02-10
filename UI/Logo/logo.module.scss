@@ -1,0 +1,9 @@
+.wrapper {
+	@apply flex items-center gap-3;
+}
+.logo {
+	@apply h-12 w-12;
+}
+.text {
+	@apply text-white font-bold text-4xl hidden sm:block;
+}

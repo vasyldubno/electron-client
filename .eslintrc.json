@@ -1,3 +1,44 @@
 {
-  "extends": "next/core-web-vitals"
+	"extends": [
+		"next/babel",
+		"next/core-web-vitals",
+		"airbnb",
+		"airbnb/hooks",
+		"eslint:recommended",
+		"prettier",
+		"plugin:prettier/recommended",
+		"plugin:@next/next/recommended",
+		"plugin:react/recommended",
+		"plugin:@typescript-eslint/recommended",
+		"plugin:@typescript-eslint/recommended-requiring-type-checking",
+		"plugin:jest/recommended",
+		"plugin:jest/style",
+		"plugin:testing-library/react"
+	],
+	"env": {
+		"browser": true,
+		"module": true,
+		"es6": true,
+		"jest": true,
+		"node": true
+	},
+	"parser": "@typescript-eslint/parser",
+	"parserOptions": {
+		"project": "tsconfig.json",
+		"ecmaVersion": 2015,
+		//    "sourceType": "module",
+		"ecmaFeatures": {
+			"jsx": true
+		}
+	},
+	"rules": {
+		"prettier/prettier": ["error"],
+		"indent": ["error", 2],
+		"react-hooks/exhaustive-deps": "off"
+	},
+	"settings": {
+		"react": {
+			"version": "detect"
+		}
+	}
 }

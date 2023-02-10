@@ -1,0 +1,10 @@
+.dropdownItem {
+	@apply bg-white text-black border-black border-[1px] flex items-center gap-3 rounded-full overflow-hidden px-3 py-1 hover:bg-gray-400;
+	transition: all 0.3s ease-out;
+}
+.button {
+	@apply absolute right-0 top-0 bg-[#EDA415] h-full rounded-3xl z-10 flex items-center justify-center font-semibold text-white px-10;
+	@media (max-width: 415px) {
+		@apply px-5;
+	}
+}

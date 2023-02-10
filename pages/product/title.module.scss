@@ -1,0 +1,12 @@
+.favorite {
+	@apply w-10 h-10 p-2 md:h-14 md:w-14;
+}
+.mainImage {
+	@apply border-[#ACACAC] border-[1px] rounded-[20px] sm:p-3 mb-3 lg:mb-6 relative w-full pb-[50%] sm:pb-[100%] lg:pb-[75%];
+}
+.otherImages {
+	@apply flex gap-2 lg:gap-5;
+}
+.addToCart {
+	@apply md:px-12 px-5 text-white font-semibold md:text-2xl text-sm bg-[#EDA415] rounded-3xl hover:shadow-lg hover:transition-shadow;
+}
