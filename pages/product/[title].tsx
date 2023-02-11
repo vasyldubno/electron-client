@@ -31,6 +31,7 @@ interface ICart {
 }
 
 function Page({ data: product }: PageProps) {
+	const router = useRouter()
 	const [images, setImages] = useState(product.variants[0].images)
 	const [selectedImage, setSelectedImage] = useState(
 		product.variants[0].images[0]
@@ -38,7 +39,6 @@ function Page({ data: product }: PageProps) {
 	const [quantity, setQuantity] = useState<number>(1)
 	const [isChecked, setIsChecked] = useState<boolean>(false)
 	const [cart, setCart] = useState<ICart>()
-	const router = useRouter()
 
 	const { refetch: addToCart } = useQuery(
 		'',
