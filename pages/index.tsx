@@ -60,16 +60,14 @@ const Home: NextPage<Props> = ({ test }) => {
 
 export default observer(Home)
 
-interface IGetStaticProps {
-	test: ProductType[] | undefined
-}
+export const getStaticProps = async () => {
+	try {
+		const products = await ecommerce.products.list()
 
-export const getStaticProps: GetStaticProps<IGetStaticProps> = async () => {
-	const products = await ecommerce.products.list()
-
-	return {
-		props: {
-			test: lodash.shuffle(products),
-		},
-	}
+		return {
+			props: {
+				test: lodash.shuffle(products),
+			},
+		}
+	} catch {}
 }

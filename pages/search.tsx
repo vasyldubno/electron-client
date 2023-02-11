@@ -119,9 +119,11 @@ function Page({ brands, categories }: PageProps) {
 export default observer(Page)
 
 export async function getStaticProps() {
-	const brands = await getBrands()
-	const categories = await getCategories()
-	return {
-		props: { brands, categories },
-	}
+	try {
+		const brands = await getBrands()
+		const categories = await getCategories()
+		return {
+			props: { brands, categories },
+		}
+	} catch {}
 }

@@ -220,10 +220,12 @@ function Page({ data: product }: PageProps) {
 export default observer(Page)
 
 export async function getServerSideProps({ params }: { params: any }) {
-	const { title } = params
-	return {
-		props: {
-			data: await ecommerce.products.retrieveProduct(title),
-		},
-	}
+	try {
+		const { title } = params
+		return {
+			props: {
+				data: await ecommerce.products.retrieveProduct(title),
+			},
+		}
+	} catch {}
 }
