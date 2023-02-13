@@ -1,3 +1,4 @@
+import { Divider } from '../../UI/Divider'
 import { Filter } from '../../pages/search'
 import { BpCheckbox, BpCheckedIcon, BpIcon } from '../Checkbox'
 import { FilterItem } from '../FilterItem'
@@ -53,7 +54,7 @@ export const BurgerMenu: FC<BurgerMenuProps> = ({ filters, filterSubmit }) => {
 										{filter.title}
 									</p>
 								</div>
-								<div className="flex flex-col gap-3 mt-3 mb-6">
+								<div className="flex flex-col mt-0 mb-0">
 									{filter.properties.map((property, index) => (
 										<div className="flex items-center" key={index}>
 											<Checkbox
@@ -84,6 +85,7 @@ export const BurgerMenu: FC<BurgerMenuProps> = ({ filters, filterSubmit }) => {
 												}
 												icon={<BpIcon />}
 												checkedIcon={<BpCheckedIcon />}
+												sx={{ padding: '4px' }}
 											/>
 											<p className="text-[#222222] text-base pl-2">
 												{property}
@@ -91,7 +93,8 @@ export const BurgerMenu: FC<BurgerMenuProps> = ({ filters, filterSubmit }) => {
 										</div>
 									))}
 								</div>
-								<div className="w-full h-[1px] bg-[#BDBDBD] mb-6"></div>
+								{/* <div className="w-full h-[1px] bg-[#BDBDBD] mb-6"></div> */}
+								<Divider styles="my-2" last={filters.length === index + 1} />
 							</>
 						)
 					})}

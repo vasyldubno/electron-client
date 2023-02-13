@@ -33,11 +33,15 @@ export const SearchInput = () => {
 	}, [search.length < 3])
 
 	const handleClick = () => {
-		setProducts([])
 		if (search.length >= 3) {
-			router.query.q = search
-			router.pathname = '/search'
-			router.push(router)
+			setProducts([])
+			router.push({
+				query: {
+					q: search,
+				},
+				pathname: '/search',
+			})
+			setSearch('')
 		}
 	}
 
@@ -45,7 +49,7 @@ export const SearchInput = () => {
 		<div className="relative flex items-center order-1 lg:order-none pt-5 lg:pt-0 w-full lg:w-[27rem]">
 			<div className="flex-grow relative rounded-3xl overflow-hidden">
 				<input
-					className="pl-6 py-4 w-full placeholder:text-[#292D32] outline-none"
+					className="pl-6 py-4 w-full placeholder:text-gray-400 outline-none"
 					placeholder="Search any things"
 					value={search}
 					onChange={(e) => setSearch(e.target.value)}

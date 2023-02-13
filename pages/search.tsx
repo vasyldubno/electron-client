@@ -30,13 +30,14 @@ function Page({ brands, categories }: PageProps) {
 	const searchQuery = router.query.q as string
 
 	const [products, setProducts] = useState<ProductType[]>([])
-	const [checked, setChecked] = useState<string[]>([])
+	const [checked, setChecked] = useState<string[]>([''])
 
 	useEffect(() => {
 		if (searchQuery !== undefined) {
-			setChecked((prev) => [...prev, router.query.q as string])
+			setChecked([searchQuery])
+			fetchProducts()
 		}
-	}, [searchQuery?.length > 0])
+	}, [searchQuery])
 
 	const { isLoading, refetch: fetchProducts } = useQuery(
 		['products', checked],
@@ -58,10 +59,6 @@ function Page({ brands, categories }: PageProps) {
 			}
 		})
 	}
-
-	useEffect(() => {
-		fetchProducts()
-	}, [checked.length > 0])
 
 	const filters: Filter[] = [
 		{
@@ -92,6 +89,7 @@ function Page({ brands, categories }: PageProps) {
 								key={index}
 								item={filter}
 								filterSubmit={filterSubmit}
+								last={filters.length === index + 1}
 							/>
 						))}
 					</div>

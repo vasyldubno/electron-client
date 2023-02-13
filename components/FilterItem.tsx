@@ -1,3 +1,4 @@
+import { Divider } from '../UI/Divider'
 import { ecommerce } from '../services/ecommerce'
 import { BpCheckbox } from './Checkbox'
 import { Dispatch, FC, SetStateAction } from 'react'
@@ -16,12 +17,14 @@ interface IFilterItem {
 	}
 	filterSubmit: any
 	toggleDrawer?: any
+	last: boolean
 }
 
 export const FilterItem: FC<IFilterItem> = ({
 	item,
 	filterSubmit,
 	toggleDrawer,
+	last,
 }) => {
 	const { control } = useForm()
 	return (
@@ -50,7 +53,8 @@ export const FilterItem: FC<IFilterItem> = ({
 					</div>
 				))}
 			</div>
-			<div className="w-full h-[1px] bg-[#BDBDBD] mb-6"></div>
+			{/* <div className="w-full h-[1px] bg-[#BDBDBD] mb-6"></div> */}
+			<Divider last={last} />
 		</>
 	)
 }
