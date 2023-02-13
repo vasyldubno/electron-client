@@ -66,13 +66,13 @@ export const Product: FC<ProductProps> = observer(
 									alt={`${item.variants[0].brand} ${item.variants[0].model}`}
 									fill
 									className="object-contain"
-									loading="lazy"
+									priority
 								/>
 							</div>
 							<p className={s.title}>
 								{item.variants[0].brand} {item.variants[0].model}
 							</p>
-							<p className={s.price}>${item.variants[0].price}</p>
+							<p className={s.price}>${item.variants[0].price.toFixed(2)}</p>
 							<div className="flex gap-3">
 								<div className={s.addToCart}>
 									<p className="text-[#272727] font-semibold text-base mr-10">
