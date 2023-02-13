@@ -47,7 +47,7 @@ export const Product: FC<ProductProps> = observer(
 										}}
 										icon={<FavoriteBorder />}
 										checkedIcon={<Favorite />}
-										sx={{ padding: 0 }}
+										sx={{ padding: 0, backgroundColor: 'transparent' }}
 										checked={
 											favoriteItem !== undefined &&
 											favoriteItem.includes(item.productId)
