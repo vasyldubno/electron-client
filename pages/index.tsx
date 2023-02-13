@@ -1,4 +1,5 @@
 import { Container } from '../UI/Container'
+import { Loader } from '../UI/Loader'
 import { Benefits } from '../components/Benefits'
 import { PopularProducts } from '../components/PopularProducts'
 import { Product } from '../components/Product'
@@ -49,7 +50,7 @@ const Home: NextPage<Props> = ({ test }) => {
 							.slice(0, 8)
 							.map((item, index) => <Product item={item} key={index} />)
 					) : (
-						<p>LOADING...</p>
+						<Loader />
 					)}
 				</div>
 				<Benefits />

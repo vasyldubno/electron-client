@@ -1,14 +1,7 @@
 import { Divider } from '../UI/Divider'
-import { ecommerce } from '../services/ecommerce'
 import { BpCheckbox } from './Checkbox'
-import { Dispatch, FC, SetStateAction } from 'react'
-import {
-	Control,
-	Controller,
-	FieldValues,
-	useController,
-	useForm,
-} from 'react-hook-form'
+import { FC } from 'react'
+import { Controller, useForm } from 'react-hook-form'
 
 interface IFilterItem {
 	item: {
@@ -43,7 +36,6 @@ export const FilterItem: FC<IFilterItem> = ({
 									<BpCheckbox
 										onChange={(e) => {
 											filterSubmit(props.name)
-											// toggleDrawer('left', false)
 										}}
 									/>
 								)
@@ -53,7 +45,6 @@ export const FilterItem: FC<IFilterItem> = ({
 					</div>
 				))}
 			</div>
-			{/* <div className="w-full h-[1px] bg-[#BDBDBD] mb-6"></div> */}
 			<Divider last={last} />
 		</>
 	)
