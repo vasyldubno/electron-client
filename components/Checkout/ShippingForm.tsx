@@ -45,11 +45,19 @@ export const ShippingForm: FC = observer(() => {
 	const router = useRouter()
 
 	const handleForm = async (data: any) => {
-		const response = await Axios.post('checkout', {
-			customerData: data,
-			products,
-			total: subTotal,
-		}).then((res) => {
+		await Axios.post(
+			'checkout',
+			{
+				customerData: data,
+				products,
+				total: subTotal,
+			},
+			{
+				headers: {
+					'Content-Type': 'application/json',
+				},
+			}
+		).then((res) => {
 			router.push(res.data.url)
 			localStorage.setItem('order_id', res.data.orderId)
 		})
