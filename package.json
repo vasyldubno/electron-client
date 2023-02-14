@@ -7,7 +7,9 @@
 		"build": "next build",
 		"start": "next start",
 		"lint": "next lint",
-		"export": "next export"
+		"export": "next export",
+		"test": "jest --watch",
+		"test:cli": "jest --coverage -silent --ci"
 	},
 	"dependencies": {
 		"@chec/commerce.js": "^2.8.0",
@@ -42,7 +44,7 @@
 		"eslint-plugin-react": "^7.31.11",
 		"eslint-plugin-react-hooks": "^4.6.0",
 		"eslint-plugin-storybook": "^0.6.8",
-		"eslint-plugin-testing-library": "^5.9.1",
+		"eslint-plugin-testing-library": "^5.10.1",
 		"libphonenumber-js": "^1.10.19",
 		"lodash": "^4.17.21",
 		"mobx": "^6.7.0",
@@ -71,9 +73,16 @@
 	},
 	"devDependencies": {
 		"@netlify/plugin-nextjs": "^4.30.4",
+		"@testing-library/jest-dom": "^5.16.5",
+		"@testing-library/react": "^13.4.0",
+		"@testing-library/user-event": "^14.4.3",
 		"@trivago/prettier-plugin-sort-imports": "^4.0.0",
+		"@types/jest": "^29.4.0",
 		"autoprefixer": "^10.4.13",
+		"jest": "^29.4.2",
+		"jest-environment-jsdom": "^29.4.2",
 		"postcss": "^8.4.21",
-		"tailwindcss": "^3.2.4"
+		"tailwindcss": "^3.2.4",
+		"ts-jest": "^29.0.5"
 	}
 }

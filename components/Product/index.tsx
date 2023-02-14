@@ -1,5 +1,5 @@
-import store from '../store/CartStore'
-import { ProductType } from '../types/productType'
+import store from '../../store/CartStore'
+import { ProductType } from '../../types/productType'
 import s from './Product.module.scss'
 import Favorite from '@mui/icons-material/Favorite'
 import FavoriteBorder from '@mui/icons-material/FavoriteBorder'

@@ -12,7 +12,6 @@ import { observer } from 'mobx-react-lite'
 import Head from 'next/head'
 import { useRouter } from 'next/router'
 import { useEffect, useState } from 'react'
-import { RxHamburgerMenu } from 'react-icons/rx'
 import { useQuery } from 'react-query'
 
 export interface Filter {

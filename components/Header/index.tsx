@@ -7,7 +7,7 @@ import Link from 'next/link'
 import { FC } from 'react'
 import { BsCartDash, BsHeart } from 'react-icons/bs'
 
-export const Header: FC = observer(() => {
+export const Header: FC = () => {
 	const favorite = store.cart.favoriteItem.length
 	const cart = store.cart.buyItem.length
 
@@ -25,7 +25,7 @@ export const Header: FC = observer(() => {
 						<SearchInput />
 
 						<div className="flex ml-auto text-white text-sm gap-7">
-							<Link href={'/favorites'}>
+							<Link href={'/favorites'} data-testId="favorites-link">
 								<div className="flex items-center relative">
 									<BsHeart className="h-6 w-6 mr-[3px]" />
 									{favorite !== 0 && (
@@ -51,4 +51,4 @@ export const Header: FC = observer(() => {
 			</div>
 		</>
 	)
-})
+}

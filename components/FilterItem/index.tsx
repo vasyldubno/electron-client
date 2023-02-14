@@ -1,5 +1,5 @@
-import { Divider } from '../UI/Divider'
-import { BpCheckbox } from './Checkbox'
+import { Divider } from '../../UI/Divider'
+import { BpCheckbox } from '../Checkbox'
 import { FC } from 'react'
 import { Controller, useForm } from 'react-hook-form'
 
@@ -9,16 +9,10 @@ interface IFilterItem {
 		properties: string[]
 	}
 	filterSubmit: any
-	toggleDrawer?: any
 	last: boolean
 }
 
-export const FilterItem: FC<IFilterItem> = ({
-	item,
-	filterSubmit,
-	toggleDrawer,
-	last,
-}) => {
+export const FilterItem: FC<IFilterItem> = ({ item, filterSubmit, last }) => {
 	const { control } = useForm()
 	return (
 		<>

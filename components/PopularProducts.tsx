@@ -3,12 +3,10 @@ import { Dispatch, FC, SetStateAction, useState } from 'react'
 const list = ['Headphones', 'Laptops', 'Tablets']
 
 interface PopularProductsProps {
-	setCheckedCategory: Dispatch<SetStateAction<string[]>>
 	fetchCheckedCategory: any
 }
 
 export const PopularProducts: FC<PopularProductsProps> = ({
-	setCheckedCategory,
 	fetchCheckedCategory,
 }) => {
 	const [selectedCategory, setSelectedCategory] = useState<string>('')

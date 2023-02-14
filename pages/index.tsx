@@ -1,73 +1,27 @@
-import { Container } from '../UI/Container'
-import { Loader } from '../UI/Loader'
-import { Benefits } from '../components/Benefits'
-import { PopularProducts } from '../components/PopularProducts'
-import { Product } from '../components/Product'
+import { HomePage } from '../components/HomePage'
 import { ecommerce } from '../services/ecommerce'
-import store from '../store/CartStore'
 import { ProductType } from '../types/productType'
 import lodash from 'lodash'
 import { observer } from 'mobx-react-lite'
-import { GetStaticProps, NextPage } from 'next'
-import Head from 'next/head'
-import { useEffect, useState } from 'react'
-import { useQuery } from 'react-query'
+import { NextPage } from 'next'
 
 interface Props {
-	test: ProductType[]
+	productsList: ProductType[]
 }
 
-const Home: NextPage<Props> = ({ test }) => {
-	const [products, setProducts] = useState<ProductType[]>(test)
-	const [checkedCategory, setCheckedCategory] = useState<string[]>([])
-
-	const fetchCheckedCategory = async (category: string[]) => {
-		const result = await ecommerce.products.filterProducts(category)
-		setProducts(lodash.shuffle(result))
-	}
-
-	// useEffect(() => {
-	// 	const fetchData = async () => {
-	// 		const result = await ecommerce.products.filterProducts(checkedCategory)
-	// 		setProducts(lodash.shuffle(result))
-	// 	}
-	// 	fetchData()
-	// }, [checkedCategory])
-
-	return (
-		<>
-			<Head>
-				<title>ELECTRON</title>
-			</Head>
-			<Container>
-				<PopularProducts
-					setCheckedCategory={setCheckedCategory}
-					fetchCheckedCategory={fetchCheckedCategory}
-				/>
-				<div className="grid gap-6 mb-12 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 grid-cols-1">
-					{products ? (
-						products
-							.slice(0, 8)
-							.map((item, index) => <Product item={item} key={index} />)
-					) : (
-						<Loader />
-					)}
-				</div>
-				<Benefits />
-			</Container>
-		</>
-	)
+const Home: NextPage<Props> = ({ productsList }) => {
+	return <HomePage productsList={productsList} />
 }
 
 export default observer(Home)
 
 export const getStaticProps = async () => {
 	try {
-		const products = await ecommerce.products.list()
+		const productsList = lodash.shuffle(await ecommerce.products.list())
 
 		return {
 			props: {
-				test: lodash.shuffle(products),
+				productsList,
 			},
 		}
 	} catch {}

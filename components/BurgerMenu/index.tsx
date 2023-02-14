@@ -1,19 +1,10 @@
 import { Divider } from '../../UI/Divider'
 import { Filter } from '../../pages/search'
-import { BpCheckbox, BpCheckedIcon, BpIcon } from '../Checkbox'
-import { FilterItem } from '../FilterItem'
-import MailIcon from '@mui/icons-material/Mail'
-import InboxIcon from '@mui/icons-material/MoveToInbox'
+import { BpCheckedIcon, BpIcon } from '../Checkbox'
 import { Checkbox } from '@mui/material'
 import Box from '@mui/material/Box'
 import Drawer from '@mui/material/Drawer'
-import List from '@mui/material/List'
-import ListItem from '@mui/material/ListItem'
-import ListItemButton from '@mui/material/ListItemButton'
-import ListItemIcon from '@mui/material/ListItemIcon'
-import ListItemText from '@mui/material/ListItemText'
-import { FC, Fragment, KeyboardEvent, MouseEvent, useState } from 'react'
-import { Controller, useForm } from 'react-hook-form'
+import { FC, useState } from 'react'
 import { RxHamburgerMenu } from 'react-icons/rx'
 
 type Anchor = 'top' | 'left' | 'bottom' | 'right'
@@ -93,7 +84,6 @@ export const BurgerMenu: FC<BurgerMenuProps> = ({ filters, filterSubmit }) => {
 										</div>
 									))}
 								</div>
-								{/* <div className="w-full h-[1px] bg-[#BDBDBD] mb-6"></div> */}
 								<Divider styles="my-2" last={filters.length === index + 1} />
 							</>
 						)
