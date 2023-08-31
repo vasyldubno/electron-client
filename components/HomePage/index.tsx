@@ -3,12 +3,12 @@ import { Loader } from '../../UI/Loader'
 import { Benefits } from '../../components/Benefits'
 import { PopularProducts } from '../../components/PopularProducts'
 import { Product } from '../../components/Product'
+import { Axios } from '../../config/apiAxios'
 import { ecommerce } from '../../services/ecommerce'
 import { ProductType } from '../../types/productType'
 import lodash from 'lodash'
 import Head from 'next/head'
 import { FC, useState } from 'react'
-import { Axios } from '../../config/apiAxios'
 
 interface Props {
 	productsList: ProductType[]
@@ -28,9 +28,13 @@ export const HomePage: FC<Props> = ({ productsList }) => {
 				<title>ELECTRON</title>
 			</Head>
 			<Container>
-				<button onCick={async () => {
-					await Axios.get('test')
-				}}>click</button>
+				<button
+					onClick={async () => {
+						await Axios.get('test')
+					}}
+				>
+					click
+				</button>
 				<PopularProducts fetchCheckedCategory={fetchCheckedCategory} />
 				<div className="grid gap-6 mb-12 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 grid-cols-1">
 					{products ? (
