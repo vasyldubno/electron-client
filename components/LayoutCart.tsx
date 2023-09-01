@@ -15,9 +15,7 @@ const updateCart = () => {
 
 export const LayoutCart: FC<PropsWithChildren> = observer(({ children }) => {
 	useEffect(() => {
-		if (typeof window !== undefined) {
-			updateCart()
-		}
+		updateCart()
 	}, [])
 
 	return <>{children}</>
