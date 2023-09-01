@@ -7,7 +7,7 @@ import Link from 'next/link'
 import { FC } from 'react'
 import { BsCartDash, BsHeart } from 'react-icons/bs'
 
-export const Header: FC = () => {
+export const Header: FC = observer(() => {
 	const favorite = store.cart.favoriteItem.length
 	const cart = store.cart.buyItem.length
 
@@ -51,4 +51,4 @@ export const Header: FC = () => {
 			</div>
 		</>
 	)
-}
+})

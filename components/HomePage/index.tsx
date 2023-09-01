@@ -28,13 +28,6 @@ export const HomePage: FC<Props> = ({ productsList }) => {
 				<title>ELECTRON</title>
 			</Head>
 			<Container>
-				<button
-					onClick={async () => {
-						await Axios.get('test')
-					}}
-				>
-					click
-				</button>
 				<PopularProducts fetchCheckedCategory={fetchCheckedCategory} />
 				<div className="grid gap-6 mb-12 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 grid-cols-1">
 					{products ? (

@@ -47,7 +47,7 @@
 		"eslint-plugin-testing-library": "^5.10.1",
 		"libphonenumber-js": "^1.10.19",
 		"lodash": "^4.17.21",
-		"mobx": "^6.7.0",
+		"mobx": "^6.10.2",
 		"mobx-react-lite": "^3.4.0",
 		"mongodb": "^5.0.0",
 		"mongoose": "^6.9.0",
