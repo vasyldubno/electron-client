@@ -1,10 +1,10 @@
 import { Axios } from '../config/apiAxios'
-import store from '../store/CartStore'
+import store, { CartStore } from '../store/CartStore'
 import { ProductType } from '../types/productType'
 import axios from 'axios'
 import { QueryClient, dehydrate } from 'react-query'
 
-const createCart = async () => {
+const createCart = async (store: CartStore) => {
 	const response = await Axios.get('createCart')
 	// const response = await axios.get(
 	// 	'https://electron-server.onrender.com/api/createCart'
@@ -14,12 +14,12 @@ const createCart = async () => {
 	localStorage.setItem('cart_id', id)
 }
 
-const retrieveCart = async (id: string) => {
+const retrieveCart = async (id: string, store: CartStore) => {
 	return await Axios.post('retrieveCart', {
 		id,
 	}).then((response) => {
 		if (response.data.cart.length === 0) {
-			createCart()
+			createCart(store)
 		}
 
 		if (response.data.cart[0]) {

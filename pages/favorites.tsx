@@ -1,6 +1,6 @@
 import { Container } from '../UI/Container'
 import { Loader } from '../UI/Loader'
-import { Product } from '../components/Product'
+import { Product } from '../components/Product/Product'
 import { ecommerce } from '../services/ecommerce'
 import store from '../store/CartStore'
 import { ProductType } from '../types/productType'

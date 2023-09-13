@@ -36,13 +36,13 @@ export default function App({ Component, pageProps }: AppProps) {
 			<Hydrate state={pageProps.dehydratedState}>
 				<main style={font.style}>
 					<StyledEngineProvider injectFirst>
-						<LayoutCart>
-							<Layout>
-								<CartProvider store={store}>
+						<CartProvider store={store}>
+							<LayoutCart>
+								<Layout>
 									<Component {...pageProps} />
-								</CartProvider>
-							</Layout>
-						</LayoutCart>
+								</Layout>
+							</LayoutCart>
+						</CartProvider>
 					</StyledEngineProvider>
 				</main>
 			</Hydrate>

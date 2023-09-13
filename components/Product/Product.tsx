@@ -1,6 +1,4 @@
-// import store from '../../store/CartStore'
 import { useStore } from '../../hooks/useStore'
-import { store } from '../../store/CartStore'
 import { ProductType } from '../../types/productType'
 import s from './Product.module.scss'
 import Favorite from '@mui/icons-material/Favorite'
@@ -25,13 +23,22 @@ export const Product: FC<ProductProps> = observer(
 	({ item, checking, filterProducts }) => {
 		const { control } = useForm()
 
-		const hookStore = useStore()
+		const store = useStore()
 
-		useEffect(() => {
-			console.log('hookStore', hookStore)
-		}, [hookStore])
+		// const [favoriteItem, setFavoriteItem] = useState<string[]>([])
 
-		const favoriteItem = store.getFavoriteItem
+		// useEffect(() => {}, [store])
+
+		const favoriteItem = toJS(store.getFavoriteItem)
+
+		// useEffect(() => {
+		// 	console.log('store change')
+		// 	if (store) {
+		// 		setFavoriteItem(toJS(store.getFavoriteItem))
+		// 	}
+		// }, [store])
+
+		// console.log(toJS(store.getFavoriteItem))
 
 		return (
 			<>
@@ -45,6 +52,7 @@ export const Product: FC<ProductProps> = observer(
 									<Checkbox
 										onChange={() => {
 											store.addFavoriteItem(props.name)
+											// setFavoriteItem((prev) => [...prev, props.name])
 											if (checking) {
 												filterProducts(item.productId)
 											}
