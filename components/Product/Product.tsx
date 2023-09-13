@@ -24,12 +24,13 @@ export const Product: FC<ProductProps> = observer(
 		const { control } = useForm()
 
 		const store = useStore()
+		console.log(store)
 
-		// const [favoriteItem, setFavoriteItem] = useState<string[]>([])
+		const [favoriteItem, setFavoriteItem] = useState<string[]>([])
 
 		// useEffect(() => {}, [store])
 
-		const favoriteItem = toJS(store.getFavoriteItem)
+		// const favoriteItem = toJS(store.getFavoriteItem)
 
 		// useEffect(() => {
 		// 	console.log('store change')
@@ -39,6 +40,12 @@ export const Product: FC<ProductProps> = observer(
 		// }, [store])
 
 		// console.log(toJS(store.getFavoriteItem))
+
+		useEffect(() => {
+			if (store.cartLoaded) {
+				setFavoriteItem(toJS(store.getFavoriteItem))
+			}
+		}, [store.cartLoaded])
 
 		return (
 			<>
@@ -52,7 +59,12 @@ export const Product: FC<ProductProps> = observer(
 									<Checkbox
 										onChange={() => {
 											store.addFavoriteItem(props.name)
-											// setFavoriteItem((prev) => [...prev, props.name])
+											setFavoriteItem((prev) => {
+												if (prev.includes(props.name)) {
+													return prev.filter((item) => item !== props.name)
+												}
+												return [...prev, props.name]
+											})
 											if (checking) {
 												filterProducts(item.productId)
 											}
