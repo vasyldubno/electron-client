@@ -1,5 +1,7 @@
 import { Layout } from '../components/Layout'
 import { LayoutCart } from '../components/LayoutCart'
+import { useStore } from '../hooks/useStore'
+import { CartProvider } from '../provider/CartProvider'
 import '../styles/globals.css'
 import { StyledEngineProvider } from '@mui/material'
 import { Poppins } from '@next/font/google'
@@ -27,6 +29,8 @@ const queryClient = new QueryClient({
 })
 
 export default function App({ Component, pageProps }: AppProps) {
+	const store = useStore()
+
 	return (
 		<QueryClientProvider client={queryClient}>
 			<Hydrate state={pageProps.dehydratedState}>
@@ -34,7 +38,9 @@ export default function App({ Component, pageProps }: AppProps) {
 					<StyledEngineProvider injectFirst>
 						<LayoutCart>
 							<Layout>
-								<Component {...pageProps} />
+								<CartProvider store={store}>
+									<Component {...pageProps} />
+								</CartProvider>
 							</Layout>
 						</LayoutCart>
 					</StyledEngineProvider>

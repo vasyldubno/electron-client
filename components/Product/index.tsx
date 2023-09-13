@@ -1,4 +1,6 @@
-import store from '../../store/CartStore'
+// import store from '../../store/CartStore'
+import { useStore } from '../../hooks/useStore'
+import { store } from '../../store/CartStore'
 import { ProductType } from '../../types/productType'
 import s from './Product.module.scss'
 import Favorite from '@mui/icons-material/Favorite'
@@ -8,7 +10,7 @@ import { toJS } from 'mobx'
 import { observer } from 'mobx-react-lite'
 import Image from 'next/image'
 import Link from 'next/link'
-import { ChangeEvent, FC, useState } from 'react'
+import { ChangeEvent, FC, useEffect, useState } from 'react'
 import { Controller, useForm } from 'react-hook-form'
 import { BsCartDash } from 'react-icons/bs'
 import { FiEye } from 'react-icons/fi'
@@ -23,11 +25,13 @@ export const Product: FC<ProductProps> = observer(
 	({ item, checking, filterProducts }) => {
 		const { control } = useForm()
 
-		const getFavorites = () => {
-			return toJS(store.cart.favoriteItem)
-		}
+		const hookStore = useStore()
 
-		const favoriteItem = getFavorites()
+		useEffect(() => {
+			console.log('hookStore', hookStore)
+		}, [hookStore])
+
+		const favoriteItem = store.getFavoriteItem
 
 		return (
 			<>
