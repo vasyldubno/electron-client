@@ -1,5 +1,5 @@
 import { Footer } from './Footer'
-import { Header } from './Header'
+import { Header } from './Header/Header'
 import { observer } from 'mobx-react-lite'
 import { FC, ReactNode } from 'react'
 
