@@ -45,12 +45,18 @@ export const Product: FC<ProductProps> = observer(
 												filterProducts(item.productId)
 											}
 										}}
+										onClick={() =>
+											console.log(
+												'click on Checkbox in Product.tsx',
+												favoriteItem
+											)
+										}
 										icon={<FavoriteBorder />}
 										checkedIcon={<Favorite />}
 										sx={{ padding: 0, backgroundColor: 'transparent' }}
+										disableRipple
 										checked={
-											favoriteItem !== undefined &&
-											favoriteItem.includes(item.productId)
+											favoriteItem && favoriteItem.includes(item.productId)
 												? true
 												: false
 										}
