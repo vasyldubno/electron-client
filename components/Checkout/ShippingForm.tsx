@@ -45,7 +45,7 @@ export const ShippingForm: FC = observer(() => {
 	const router = useRouter()
 
 	const handleForm = async (data: any) => {
-		await Axios.post(
+		const response = await Axios.post<{ url: string; orderId: string }>(
 			'checkout',
 			{
 				customerData: data,
@@ -57,10 +57,12 @@ export const ShippingForm: FC = observer(() => {
 					'Content-Type': 'application/json',
 				},
 			}
-		).then((res) => {
-			router.push(res.data.url)
-			localStorage.setItem('order_id', res.data.orderId)
-		})
+		)
+
+		if (response) {
+			router.push(response.data.url)
+			localStorage.setItem('order_id', response.data.orderId)
+		}
 	}
 
 	const fieldsInput: { name: string; label: string }[] = [

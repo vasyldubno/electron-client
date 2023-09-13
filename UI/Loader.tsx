@@ -1,10 +1,15 @@
+import { FC } from 'react'
 import { ColorRing } from 'react-loader-spinner'
 
-export const Loader = () => (
+type Props = {
+	size?: string
+}
+
+export const Loader: FC<Props> = ({ size }) => (
 	<ColorRing
 		visible={true}
-		height="180"
-		width="180"
+		height={size ?? '180'}
+		width={size ?? '180'}
 		ariaLabel="blocks-loading"
 		wrapperStyle={{}}
 		wrapperClass="blocks-wrapper"
