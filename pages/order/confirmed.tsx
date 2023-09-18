@@ -1,17 +1,20 @@
 import { Container } from '../../UI/Container'
 import { Axios } from '../../config/apiAxios'
+import { useStore } from '../../hooks/useStore'
 import { ecommerce } from '../../services/ecommerce'
-import store from '../../store/CartStore'
 import { observer } from 'mobx-react-lite'
 import Link from 'next/link'
 import { useEffect } from 'react'
 import { BsFillCheckCircleFill } from 'react-icons/bs'
 
 function Page() {
+	const store = useStore()
+
 	useEffect(() => {
 		ecommerce.orders.completed()
-		ecommerce.carts.empty()
+		ecommerce.carts.empty(store)
 	}, [store.cartLoaded])
+
 	return (
 		<>
 			<Container styles={'flex flex-col flex-1 items-center'}>

@@ -1,7 +1,7 @@
 import { Divider } from '../UI/Divider'
 import { QuantityCart } from '../UI/QuantityCart'
+import { useStore } from '../hooks/useStore'
 import { ecommerce } from '../services/ecommerce'
-import store from '../store/CartStore'
 import { ProductType } from '../types/productType'
 import Image from 'next/image'
 import { Dispatch, FC, SetStateAction, useState } from 'react'
@@ -22,10 +22,12 @@ export const CartItem: FC<CartItemProps> = ({
 	filterProducts,
 	last,
 }) => {
+	const store = useStore()
+
 	const [subtotal, setSubtotal] = useState<number>(0)
 
 	const handleDelete = () => {
-		ecommerce.carts.remove(product.productId).then((res) => {
+		ecommerce.carts.remove(product.productId, store).then((res) => {
 			store.setUpdateCart(res.data.result)
 			setIsUpdatedCart(true)
 		})

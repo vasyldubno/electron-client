@@ -1,4 +1,4 @@
-import { HomePage } from '../components/HomePage'
+import { HomePage } from '../components/HomePage/HomePage'
 import { ecommerce } from '../services/ecommerce'
 import { ProductType } from '../types/productType'
 import lodash from 'lodash'

@@ -1,7 +1,6 @@
 import { Axios } from '../config/apiAxios'
-import store, { CartStore } from '../store/CartStore'
+import { CartStore } from '../store/CartStore'
 import { ProductType } from '../types/productType'
-import axios from 'axios'
 import { QueryClient, dehydrate } from 'react-query'
 
 const createCart = async (store: CartStore) => {
@@ -94,14 +93,14 @@ const completedOrder = async () => {
 	}).then((res) => localStorage.removeItem('order_id'))
 }
 
-const emptyCart = async () => {
+const emptyCart = async (store: CartStore) => {
 	await Axios.post('emptyCart', {
 		cartId: store.cart.id,
 	})
 	store.cart.buyItem = []
 }
 
-const removeItemFromCart = async (id: string) => {
+const removeItemFromCart = async (id: string, store: CartStore) => {
 	return await Axios.post('deleteProduct', {
 		id: store.getId,
 		product_id: id,

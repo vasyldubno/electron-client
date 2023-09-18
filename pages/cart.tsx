@@ -2,9 +2,10 @@ import { Container } from '../UI/Container'
 import { Loader } from '../UI/Loader'
 import { CartItem } from '../components/CartItem'
 import { CartTotal } from '../components/CartTotal'
+import { useStore } from '../hooks/useStore'
 import { ecommerce } from '../services/ecommerce'
-import store from '../store/CartStore'
 import { ProductType } from '../types/productType'
+import { calcSubtotal } from '../utils/calcSubtotal'
 import { toJS } from 'mobx'
 import { observer } from 'mobx-react-lite'
 import Head from 'next/head'
@@ -12,6 +13,8 @@ import { useEffect, useState } from 'react'
 import { useQuery } from 'react-query'
 
 const Page = () => {
+	const store = useStore()
+
 	const [products, setProducts] = useState<ProductType[]>([])
 	const [totalSubtotal, setTotalSubotal] = useState<number>(0)
 	const [isUpdatedCart, setIsUpdatedCart] = useState<boolean>(false)
@@ -35,18 +38,17 @@ const Page = () => {
 		{ enabled: false }
 	)
 
-	if (isUpdatedCart) {
-		setTotalSubotal(0)
-		toJS(store.cart.buyItem).forEach(async (item) => {
-			const product = await ecommerce.products.retrieveProduct(item.productId)
-			product.quantity = item.quantity
-			setTotalSubotal(
-				(prev) =>
-					prev + (product.quantity as number) * product.variants[0].price
-			)
-		})
-		setIsUpdatedCart(false)
-	}
+	useEffect(() => {
+		if (isUpdatedCart) {
+			setTotalSubotal(0)
+			calcSubtotal(store).then((res) => {
+				if (res) {
+					setTotalSubotal(res)
+					setIsUpdatedCart(false)
+				}
+			})
+		}
+	}, [isUpdatedCart])
 
 	useEffect(() => {
 		fetchProducts()

@@ -1,14 +1,13 @@
 import { Container } from '../../UI/Container'
 import { Loader } from '../../UI/Loader'
-import { Benefits } from '../../components/Benefits'
-import { PopularProducts } from '../../components/PopularProducts'
-import { Axios } from '../../config/apiAxios'
 import { ecommerce } from '../../services/ecommerce'
 import { ProductType } from '../../types/productType'
+import { Benefits } from '../Benefits'
+import { PopularProducts } from '../PopularProducts'
 import { Product } from '../Product/Product'
 import lodash from 'lodash'
 import Head from 'next/head'
-import { FC, useEffect, useState } from 'react'
+import { FC, useState } from 'react'
 
 interface Props {
 	productsList: ProductType[]
@@ -21,10 +20,6 @@ export const HomePage: FC<Props> = ({ productsList }) => {
 		const result = await ecommerce.products.filterProducts(category)
 		setProducts(lodash.shuffle(result))
 	}
-
-	useEffect(() => {
-		console.log('CART LOCALSTORAGE', localStorage.getItem('cart_id'))
-	}, [])
 
 	return (
 		<>

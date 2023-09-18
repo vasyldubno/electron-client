@@ -1,7 +1,7 @@
 import { Axios } from '../../config/apiAxios'
 import { listCountries } from '../../data/listCountries'
+import { useStore } from '../../hooks/useStore'
 import { ecommerce } from '../../services/ecommerce'
-import store from '../../store/CartStore'
 import { ProductType } from '../../types/productType'
 import s from './checkout.module.scss'
 import {
@@ -26,6 +26,8 @@ interface State {
 }
 
 export const ShippingForm: FC = observer(() => {
+	const store = useStore()
+
 	const selectRef = createRef<HTMLDivElement>()
 	const [selectedCountry, setSelectedCountry] = useState<string>('')
 	const [states, setStates] = useState<State[]>()

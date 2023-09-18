@@ -2,8 +2,8 @@ import { Container } from '../../UI/Container'
 import { Divider } from '../../UI/Divider'
 import { Quantity } from '../../UI/Quantity'
 import { Axios } from '../../config/apiAxios'
+import { useStore } from '../../hooks/useStore'
 import { ecommerce } from '../../services/ecommerce'
-import store from '../../store/CartStore'
 import s from '../../styles/title.module.scss'
 import { ProductType } from '../../types/productType'
 import Favorite from '@mui/icons-material/Favorite'
@@ -32,6 +32,8 @@ interface ICart {
 
 function Page({ data: product }: PageProps) {
 	const router = useRouter()
+	const store = useStore()
+
 	const [images, setImages] = useState(product.variants[0].images)
 	const [selectedImage, setSelectedImage] = useState(
 		product.variants[0].images[0]

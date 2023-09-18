@@ -8,7 +8,7 @@ import { toJS } from 'mobx'
 import { observer } from 'mobx-react-lite'
 import Image from 'next/image'
 import Link from 'next/link'
-import { ChangeEvent, FC, useEffect, useState } from 'react'
+import { FC, useEffect, useState } from 'react'
 import { Controller, useForm } from 'react-hook-form'
 import { BsCartDash } from 'react-icons/bs'
 import { FiEye } from 'react-icons/fi'
@@ -24,22 +24,8 @@ export const Product: FC<ProductProps> = observer(
 		const { control } = useForm()
 
 		const store = useStore()
-		console.log(store)
 
 		const [favoriteItem, setFavoriteItem] = useState<string[]>([])
-
-		// useEffect(() => {}, [store])
-
-		// const favoriteItem = toJS(store.getFavoriteItem)
-
-		// useEffect(() => {
-		// 	console.log('store change')
-		// 	if (store) {
-		// 		setFavoriteItem(toJS(store.getFavoriteItem))
-		// 	}
-		// }, [store])
-
-		// console.log(toJS(store.getFavoriteItem))
 
 		useEffect(() => {
 			if (store.cartLoaded) {

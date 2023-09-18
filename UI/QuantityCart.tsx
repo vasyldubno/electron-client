@@ -1,6 +1,6 @@
 import { Axios } from '../config/apiAxios'
+import { useStore } from '../hooks/useStore'
 import { ecommerce } from '../services/ecommerce'
-import store from '../store/CartStore'
 import { ProductType } from '../types/productType'
 import { Dispatch, FC, SetStateAction, useEffect, useState } from 'react'
 import { useQuery } from 'react-query'
@@ -18,6 +18,8 @@ export const QuantityCart: FC<QuantityProps> = ({
 	setIsUpdatedCart,
 	fetchProducts,
 }) => {
+	const store = useStore()
+
 	const [quantity, setQuantity] = useState<number>(product.quantity as number)
 
 	const { refetch: addToCart } = useQuery(

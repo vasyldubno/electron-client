@@ -1,6 +1,6 @@
 import { Container } from '../../UI/Container'
 import { Logo } from '../../UI/Logo'
-import store from '../../store/CartStore'
+import { useStore } from '../../hooks/useStore'
 import { SearchInput } from './SearchInput'
 import { observer } from 'mobx-react-lite'
 import Link from 'next/link'
@@ -8,6 +8,8 @@ import { FC } from 'react'
 import { BsCartDash, BsHeart } from 'react-icons/bs'
 
 export const Header: FC = observer(() => {
+	const store = useStore()
+
 	const favorite = store.cart.favoriteItem.length
 	const cart = store.cart.buyItem.length
 

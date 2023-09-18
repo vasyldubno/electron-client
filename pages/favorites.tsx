@@ -1,17 +1,16 @@
 import { Container } from '../UI/Container'
-import { Loader } from '../UI/Loader'
 import { Product } from '../components/Product/Product'
+import { useStore } from '../hooks/useStore'
 import { ecommerce } from '../services/ecommerce'
-import store from '../store/CartStore'
 import { ProductType } from '../types/productType'
-import { commerce } from '../utils/commerce'
 import { toJS } from 'mobx'
 import { observer } from 'mobx-react-lite'
 import Head from 'next/head'
-import { use, useEffect, useState } from 'react'
-import { useQuery } from 'react-query'
+import { useEffect, useState } from 'react'
 
 function Page() {
+	const store = useStore()
+
 	const [products, setProducts] = useState<ProductType[]>([])
 
 	const filterProducts = (productId: string) => {

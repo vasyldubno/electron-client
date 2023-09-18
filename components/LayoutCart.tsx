@@ -1,9 +1,8 @@
 import { useStore } from '../hooks/useStore'
 import { ecommerce } from '../services/ecommerce'
-import store, { CartStore } from '../store/CartStore'
-import axios from 'axios'
+import { CartStore } from '../store/CartStore'
 import { observer } from 'mobx-react-lite'
-import { FC, PropsWithChildren, useEffect, useState } from 'react'
+import { FC, PropsWithChildren, useEffect } from 'react'
 
 const updateCart = (store: CartStore) => {
 	const cart_id = localStorage.getItem('cart_id')
@@ -17,8 +16,6 @@ const updateCart = (store: CartStore) => {
 
 export const LayoutCart: FC<PropsWithChildren> = observer(({ children }) => {
 	const store = useStore()
-
-	console.log(store)
 
 	useEffect(() => {
 		if (store) {
