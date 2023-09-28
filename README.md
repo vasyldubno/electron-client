@@ -35,3 +35,12 @@ The easiest way to deploy your Next.js app is to use the [Vercel Platform](https
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details. -->
 # Electron
+<img src="https://github.com/vasyldubno/electron-client/blob/main/screenshot.png" />
+
+## Technologies
+Front-end - [Next.JS](https://nextjs.org)  
+Back-end - [Express.JS](https://expressjs.com)  
+[Repository with Backend](https://github.com/vasyldubno/electron-server)
+
+## Deploy
+[Demo](https://electronshop.vercel.app)
