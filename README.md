@@ -42,5 +42,4 @@ Front-end - [Next.JS](https://nextjs.org)
 Back-end - [Express.JS](https://expressjs.com)  
 [Repository with Backend](https://github.com/vasyldubno/electron-server)
 
-## Deploy
-[Demo](https://electronshop.vercel.app)
+
